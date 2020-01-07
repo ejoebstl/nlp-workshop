@@ -5,7 +5,6 @@ from tensorflow.python.keras.preprocessing.sequence import pad_sequences
 project_path = '/root'
 
 def get_data(train_size, random_seed=100):
-
     """ Getting randomly shuffled training / testing data """
     en_text = read_data(os.path.join(project_path, 'data', 'small_vocab_en'))
     fr_text = read_data(os.path.join(project_path, 'data', 'small_vocab_fr'))
@@ -45,8 +44,8 @@ def read_data(filename):
 def preprocess_data(en_tokenizer, fr_tokenizer, en_text, fr_text, en_timesteps, fr_timesteps):
     """ Preprocessing data and getting a sequence of word indices """
 
-    en_seq = sents2sequences(en_tokenizer, en_text, reverse=False, padding_type='pre', pad_length=en_timesteps)
-    fr_seq = sents2sequences(fr_tokenizer, fr_text, pad_length=fr_timesteps)
+    en_seq = sentence_to_sequence(en_tokenizer, en_text, reverse=False, padding_type='pre', pad_length=en_timesteps)
+    fr_seq = sentence_to_sequence(fr_tokenizer, fr_text, pad_length=fr_timesteps)
     print('Vocabulary size (English): {}'.format(np.max(en_seq)+1))
     print('Vocabulary size (French): {}'.format(np.max(fr_seq)+1))
     print('En text shape: {}'.format(en_seq.shape))
@@ -54,7 +53,7 @@ def preprocess_data(en_tokenizer, fr_tokenizer, en_text, fr_text, en_timesteps, 
 
     return en_seq, fr_seq
 
-def sents2sequences(tokenizer, sentences, reverse=False, pad_length=None, padding_type='post'):
+def sentence_to_sequence(tokenizer, sentences, reverse=False, pad_length=None, padding_type='post'):
     encoded_text = tokenizer.texts_to_sequences(sentences)
     preproc_text = pad_sequences(encoded_text, padding=padding_type, maxlen=pad_length)
     if reverse:
