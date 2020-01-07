@@ -1,6 +1,7 @@
 import os
 import tensorflow as tf
 import pandas as pd
+import re
 
 # From: https://towardsdatascience.com/bert-in-keras-with-tensorflow-hub-76bcbc9417b
 
