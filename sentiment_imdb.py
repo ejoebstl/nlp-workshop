@@ -5,6 +5,8 @@ import re
 
 # From: https://towardsdatascience.com/bert-in-keras-with-tensorflow-hub-76bcbc9417b
 
+max_seq_length = 256
+
 # Load all files from a directory in a DataFrame.
 def load_directory_data(directory):
   data = {}
