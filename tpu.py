@@ -1,4 +1,5 @@
 import tensorflow as tf
+import os
 
 def get_tpu_strategy():
     TPU_WORKER = 'grpc://' + os.environ['COLAB_TPU_ADDR']
