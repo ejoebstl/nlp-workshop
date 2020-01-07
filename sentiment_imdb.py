@@ -2,7 +2,7 @@ import os
 import tensorflow as tf
 import pandas as pd
 import re
-import np as numpy
+import numpy as np
 
 # From: https://towardsdatascience.com/bert-in-keras-with-tensorflow-hub-76bcbc9417b
 
